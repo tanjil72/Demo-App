@@ -15,8 +15,6 @@
   cursor: pointer;
 }
 
-
-
 .App-intro {
   font-size: large;
 }
@@ -68,24 +66,7 @@ input[type="submit"]:hover {
 .search > input[type="text"]{
   width: 40%;
   min-width: 170px;
+  height: 40px;
+  font-size: 24px;
 }
 
-@media screen and (min-width: 694px) and (max-width: 915px) {
-  .movie {
-    max-width: 33%;
-  }
-}
-
-@media screen and (min-width: 652px) and (max-width: 693px) {
-  .movie {
-    max-width: 50%;
-  }
-}
-
-
-@media screen and (max-width: 651px) {
-  .movie {
-    max-width: 100%;
-    margin: auto;
-  }
-}
