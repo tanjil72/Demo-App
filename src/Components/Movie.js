@@ -6,8 +6,7 @@ const DEFAULT_PLACEHOLDER_IMAGE =
 const Movie = ({ movie }) => {
   let Releasedate = movie.release_date;
   const ReleaseArray = Releasedate.split("-");
-  const poster =
-    movie.poster_path === "N/A" ? DEFAULT_PLACEHOLDER_IMAGE : movie.poster_path;
+  const poster = movie.poster_path;
   return (
     <div className="movie">
       <h2 id="title">{movie.title}</h2>
