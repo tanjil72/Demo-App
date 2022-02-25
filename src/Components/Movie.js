@@ -4,19 +4,20 @@ const DEFAULT_PLACEHOLDER_IMAGE ="https://us.123rf.com/450wm/pavelstasevich/pave
 
 const Movie = ({ movie }) => {
     const poster =
-      movie.Poster === "N/A" ? DEFAULT_PLACEHOLDER_IMAGE : movie.Poster;
+      movie.image === "N/A" ? DEFAULT_PLACEHOLDER_IMAGE : movie.image;
     return (
       <div className="movie">
-        <h2>{movie.Title}</h2>
+        <h2>{movie.id}</h2>
         <div>
           <img
             width="200"
-            alt={`The movie titled: ${movie.Title}`}
+            alt={`The movie titled: ${movie.name}`}
             src={poster}
           />
         </div>
-        <p>({movie.Year})</p>
-        <p>({movie.Released})</p>
+        <p>({movie.name})</p>
+        
+        
       </div>
     );
   };

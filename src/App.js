@@ -5,7 +5,7 @@ import Header from "./Components/Header";
 import Movie from "./Components/Movie";
 
 
-const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=d215ab46"; 
+const MOVIE_API_URL = "https://api.themoviedb.org/3/movie/550?api_key=e07e021506d25ba87814281a91ba6bcd"; 
 
 
 const App = () => {
@@ -13,41 +13,53 @@ const App = () => {
   const [movies, setMovies] = useState([]);
 
     useEffect(() => {
-    fetch(MOVIE_API_URL)
-      .then(response => response.json())
-      .then(jsonResponse => {
-        setMovies(jsonResponse.Search);
-       
-      });
+      fetch("https://movie_list.p.rapidapi.com/list", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "movie_list.p.rapidapi.com",
+		"x-rapidapi-key": "7fef88001amsh755e61667596f86p126416jsn71a4d8d8a287"
+	}
+})
+.then(response=>response.json())
+.then(Jsonresponse=>{
+  
+setMovies(Jsonresponse)
+  
+})
+.catch(err => {
+	console.error(err);
+});
+
   }, []);
 
     const search = searchValue => {
-    
-
-    fetch(`https://www.omdbapi.com/?s=${searchValue}&apikey=d215ab46`)
-      .then(response => response.json())
-      .then(jsonResponse => {
-        if (jsonResponse.Response === "True") {
-          setMovies(jsonResponse.Search);
-          
-    
-        } else {
-        
-   
-        }
-      });
-  	};
+      fetch("https://movie_list.p.rapidapi.com/list", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "movie_list.p.rapidapi.com",
+		"x-rapidapi-key": "7fef88001amsh755e61667596f86p126416jsn71a4d8d8a287"
+	}
+})
+.then(response=>response.json())
+.then(Jsonresponse=>{
+  
+setMovies(Jsonresponse)
+  
+})
+.catch(err => {
+	console.error(err);
+});
+    }
 
     
     return (
      <div className="App">
       <Header text="Search Movies" />
       <Search search={search} />
-
       <div className="movies">
         {
           movies.map((movie, index) => (
-            <Movie movie={movie} />
+            <Movie key={`${index}`} movie={movie} />
           ))
         }
       </div>
