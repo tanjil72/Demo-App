@@ -15,10 +15,7 @@
   cursor: pointer;
 }
 
-.spinner {
-  height: 80px;
-  margin: auto;
-}
+
 
 .App-intro {
   font-size: large;
@@ -40,26 +37,13 @@
   margin: 0;
 }
 
-.add-movies {
-  text-align: center;
-}
 
-.add-movies button {
-  font-size: 16px;
-  padding: 8px;
-  margin: 0 10px 30px 10px;
-}
 
 .movie {
   padding: 5px 25px 10px 25px;
-  max-width: 25%;
+  max-width: 55%;
 }
 
-.errorMessage {
-  margin: auto;
-  font-weight: bold;
-  color: rgb(161, 15, 15);
-}
 
 
 .search {

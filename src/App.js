@@ -5,32 +5,55 @@ import Header from "./Components/Header";
 import Movie from "./Components/Movie";
 
 
-const MOVIE_API_URL = "http://www.omdbapi.com/?i=tt3896198&apikey=d215ab46";
+const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=d215ab46"; 
 
-const App=()=>{
 
-  const [Movie,setMovie]=useState("");
+const App = () => {
 
-  const searchMovie=(typedMovie)=>{
-    fetch(`http://www.omdbapi.com/?i=${typedMovie}&apikey=d215ab46`)
-    .then(response=>response.json())
-    .then(jsonResponse=>{
-if(jsonResponse.Response==='True'){
-Movie(jsonResponse.Search)
-}
-    })
-  }
+  const [movies, setMovies] = useState([]);
 
- 
+    useEffect(() => {
+    fetch(MOVIE_API_URL)
+      .then(response => response.json())
+      .then(jsonResponse => {
+        setMovies(jsonResponse.Search);
+       
+      });
+  }, []);
 
-  const [search,setSearch]=useState("");
-  return(
-    <div>
-      <Header text="Search Movie" />
-      <Search search={searchMovie} />
+    const search = searchValue => {
+    
+
+    fetch(`https://www.omdbapi.com/?s=${searchValue}&apikey=d215ab46`)
+      .then(response => response.json())
+      .then(jsonResponse => {
+        if (jsonResponse.Response === "True") {
+          setMovies(jsonResponse.Search);
+          
+    
+        } else {
+        
+   
+        }
+      });
+  	};
+
+    
+    return (
+     <div className="App">
+      <Header text="Search Movies" />
+      <Search search={search} />
+
+      <div className="movies">
+        {
+          movies.map((movie, index) => (
+            <Movie movie={movie} />
+          ))
+        }
+      </div>
     </div>
-  )
-}
+  );
+};
 
 
 export default App;
