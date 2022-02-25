@@ -10,17 +10,18 @@ const Movie = ({ movie }) => {
     movie.poster_path === "N/A" ? DEFAULT_PLACEHOLDER_IMAGE : movie.poster_path;
   return (
     <div className="movie">
-      <h2>{movie.title}</h2>
+      <h2 id="title">{movie.title}</h2>
       <div>
         <img
           width="200"
           height="300"
-          alt={`The movie titled: ${movie.title}`}
+          alt={"No Image"}
           src={poster}
         />
       </div>
 
-      <p>Year: {ReleaseArray[0]} <span><p>Rating: {movie.vote_average}⭐</p></span></p>
+      <p>Year: {ReleaseArray[0]}</p>
+      <p>Rating: {movie.vote_average}⭐</p>
     </div>
   );
 };

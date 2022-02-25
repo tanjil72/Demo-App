@@ -8,7 +8,7 @@ const Search = (props) => {
   };
   const callSearch = (e) => {
     e.preventDefault();
-    if(searchVal!=''){
+    if(searchVal!==''){
         props.search(searchVal);
     }else{
         alert("Please Enter a value")
