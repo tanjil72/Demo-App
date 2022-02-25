@@ -1,1 +1,1 @@
-# Demo-App
+# Movie Search App
