@@ -5,7 +5,7 @@ import Header from "./Components/Header";
 import Movie from "./Components/Movie";
 
 
-const MOVIE_API_URL = "https://api.themoviedb.org/3/movie/550?api_key=e07e021506d25ba87814281a91ba6bcd"; 
+const MOVIE_API_URL = "https://advanced-movie-search.p.rapidapi.com/search/movie?query=thor&page=1"; 
 
 
 const App = () => {
@@ -13,17 +13,17 @@ const App = () => {
   const [movies, setMovies] = useState([]);
 
     useEffect(() => {
-      fetch("https://movie_list.p.rapidapi.com/list", {
+      fetch(MOVIE_API_URL, {
 	"method": "GET",
 	"headers": {
-		"x-rapidapi-host": "movie_list.p.rapidapi.com",
+		"x-rapidapi-host": "advanced-movie-search.p.rapidapi.com",
 		"x-rapidapi-key": "7fef88001amsh755e61667596f86p126416jsn71a4d8d8a287"
 	}
 })
 .then(response=>response.json())
 .then(Jsonresponse=>{
   
-setMovies(Jsonresponse)
+setMovies(Jsonresponse.results)
   
 })
 .catch(err => {
@@ -33,17 +33,17 @@ setMovies(Jsonresponse)
   }, []);
 
     const search = searchValue => {
-      fetch("https://movie_list.p.rapidapi.com/list", {
+      fetch(`https://advanced-movie-search.p.rapidapi.com/search/movie?query=${searchValue}&page=1`, {
 	"method": "GET",
 	"headers": {
-		"x-rapidapi-host": "movie_list.p.rapidapi.com",
+		"x-rapidapi-host": "advanced-movie-search.p.rapidapi.com",
 		"x-rapidapi-key": "7fef88001amsh755e61667596f86p126416jsn71a4d8d8a287"
 	}
 })
 .then(response=>response.json())
 .then(Jsonresponse=>{
   
-setMovies(Jsonresponse)
+setMovies(Jsonresponse.results)
   
 })
 .catch(err => {
@@ -59,7 +59,7 @@ setMovies(Jsonresponse)
       <div className="movies">
         {
           movies.map((movie, index) => (
-            <Movie key={`${index}`} movie={movie} />
+            <Movie key={index} movie={movie} />
           ))
         }
       </div>
