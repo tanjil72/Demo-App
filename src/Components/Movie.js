@@ -19,6 +19,7 @@ const Movie = ({ movie }) => {
       <p>Year: {ReleaseArray[0]}</p>
       <p>Rating: {movie.vote_average}⭐</p>
     </div>
+    
   );
 };
 
